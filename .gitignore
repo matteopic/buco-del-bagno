@@ -1,0 +1,6 @@
+# Therion files
+/.xtherion.dat
+/therion.log
+
+# Visual Studio Code
+/.history

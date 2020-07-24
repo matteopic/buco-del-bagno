@@ -1,0 +1,11 @@
+encoding  utf-8
+source index.th
+
+layout debug
+debug all
+endlayout
+
+
+export map -projection plan  -output "Buco del Bagno.pdf"
+
+export model -output "Buco del Bagno.lox"
