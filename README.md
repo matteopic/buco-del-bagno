@@ -4,6 +4,24 @@
 ![3D result](cave.png)
 
 
+Requirements
+------------
+
+* Therion + Loch
+
+Build
+-----
+
+on Windows you can just double click on build.bat,
+
+on other platforms
+
+/path/to/therion buco-del-bagno.thconfig
+
+after the build following files will appear:
+* `Buco del bagno - plan.pdf` The plan of the cave
+* `Buco del bagno.lox` The 3D model of the cave
+
 Elevation Data
 --------------
 
