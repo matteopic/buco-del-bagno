@@ -1,23 +1,29 @@
 encoding  utf-8
-
 input "surface.th"
-input "plan.th2"
+input "analogico.th"
+
+input "falco-plan.th2"
+input "falco-section.th2"
+
+input "bagno-plan.th2"
+input "bagno-section.th2"
 
 centreline
-station 73MAAN "Buco del Bagno" entrance
-cs UTM33
-#fix 73MAAN 335137.45 4807340.59 199
+  station 73MAAN "Buco del Bagno" entrance
+  cs UTM33
+  # fix 73MAAN 335137.45 4807340.59 199
 endcentreline
 
 centreline
-station 60MAAN "Buco del Falco" entrance
-#cs UTM33
-#fix 60MAAN 335121.45 4807346.59 198
+  station 60MAAN "Buco del Falco" entrance
+  cs UTM33
+  # fix 60MAAN 335121.45 4807346.59 198
 endcentreline
 
 centreline
   station 8MAAN "Grotta del Fiume" entrance
-  fix 8MAAN 335178.78 4807339.08 206
+  cs UTM33
+  #fix 8MAAN 335178.78 4807339.08 206
 endcentreline
 
 centreline -id interna
@@ -26,7 +32,7 @@ centreline -id interna
   team "Andrea Galeazzi"
   date 2020.07.18
   data normal from to compass clino tape
-  extend right
+  extend start 1.0
   1.0 - 270.53 66.78 0.819
   1.0 - 281.76 51.64 0.680
   1.0 - 293.41 24.35 0.437
@@ -39,6 +45,7 @@ centreline -id interna
   1.0 - 241.11 82.08 0.481
   1.0 - 284.36 67.33 0.659
   1.0 - 0.46 -13.47 1.915
+  
   1.1 1.0 174.39 -1.66 1.963
   1.1 1.2 346.59 5.42 7.021
   1.2 1.3 346.23 3.77 7.002
@@ -192,6 +199,7 @@ centreline -id interna
   1.7 - 100.75 13.21 0.683
   1.7 - 149.94 48.66 1.100
   1.7 - 142.55 -8.55 3.537
+  extend left
   1.7 1.8 161.78 15.18 2.532
   1.8 - 40.94 -18.61 1.664
   1.8 - 47.12 -13.74 2.088
@@ -233,6 +241,7 @@ centreline -id interna
   1.8 - 86.13 -27.75 3.886
   1.8 - 146.23 25.32 2.032
   1.8 - 151.33 28.92 2.374
+  extend right
   1.8 1.9 83.89 -9.55 2.116
   1.9 - 158.33 27.07 2.202
   1.9 - 171.84 27.08 3.038
@@ -272,6 +281,7 @@ centreline -id interna
   1.9 - 80.81 -57.02 2.749
   1.9 - 104.96 -20.65 1.701
   1.9 - 96.76 -1.15 1.292
+  extend left
   1.6 1.10 208.21 4.08 1.784
   1.10 - 227.76 67.57 0.963
   1.10 - 150.27 79.83 3.253
@@ -302,6 +312,7 @@ centreline -id interna
   1.10 - 49.80 76.92 5.972
   1.10 - 64.90 75.75 5.468
   1.10 - 80.28 77.38 5.801
+  extend right
   1.10 1.11 345.76 13.15 2.861
   1.11 - 223.47 -0.39 0.743
   1.11 - 231.06 -15.51 1.085
@@ -904,19 +915,21 @@ endcentreline
 
 centreline
   station-names "FIUME" ""
-  date 2005.07.09
+  date 2020.07.04
   data normal from to compass clino tape
   extend right
-  # La marco come surface così non viene fatto il render in loch e comunque 
-  # non appartiene allo scopo di questo rilievo
+  
+  # Viene impostata come `surface` così non appare nel render in loch dato che
+  # non è nello scopo di questo rilievo
   flags surface
+  
+  # Da stanza all'ingresso verso sala della croce
   1.0 1.1 132.34 -0.69 6.712
   1.1 1.2 210.85 2.43 8.591
   1.2 1.3 172.26 4.26 15.941
 endcentreline
 
 centreline
-  cs UTM33
   station-names "FIUME" ""
   team "Matteo Piccinini"
   team "Andrea Galeazzi"
@@ -924,8 +937,8 @@ centreline
   data normal from to compass clino tape
   extend right
   
-  # La marco come surface così non viene fatto il render in loch e comunque 
-  # non appartiene allo scopo di questo rilievo
+  # Viene impostata come `surface` così non appare nel render in loch dato che
+  # non è nello scopo di questo rilievo
   flags surface
   
   # Da stanza all'ingresso verso il tunnel di accesso
@@ -952,23 +965,23 @@ centreline
   1.25 1.26 317.55 -12.37 3.759
 endcentreline
 
-map plan
 
-  riva-plan
-  
-    break
 
-  esterna-plan
-
-    break
-
-  falco-plan
+map overlayPLAN
   interno-plan
-
+  
+  analogico-plan
 endmap
 
-equate 60MAAN EXT2.8
-equate 73MAAN INT1.0
-equate INT1.0  EXT2.6
+map overlayEE
+  interno-extended-elevation
+  
+  analogico-extended-elevation
+endmap
+
+equate FIUME2.1  8MAAN
 equate FIUME1.26 EXT1.26
+equate EXT2.6 73MAAN INT1.0
+equate EXT2.8 60MAAN 
+equate INT1.6 ANALOGICO05
 

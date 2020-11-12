@@ -1,0 +1,46 @@
+encoding  utf-8
+##XTHERION## xth_me_area_adjust -128 -7143 10049 128
+##XTHERION## xth_me_area_zoom_to 25
+##XTHERION## xth_me_image_insert {0 1 1.0} {0 {}} 0073MAAN_02_ps.png 0 {}
+
+
+
+scrap analogico-plan -projection plan -scale [-128 -7143 10049 -7143 0.0 0.0 258.4958 0.0 m]
+
+point 6718.0 -2334.0 station -name ANALOGICO08
+
+point 7831.0 -1886.0 station -name ANALOGICO07
+
+point 7384.0 -900.0 station -name ANALOGICO04
+
+point 6352.0 -478.0 station -name ANALOGICO03
+
+point 5270.0 -748.0 station -name ANALOGICO02
+
+point 2534.0 -1524.0 station -name ANALOGICO01
+
+point 524.0 -1960.0 station -name ANALOGICO00
+
+point 7841.0 -1418.0 station -name ANALOGICO05
+
+endscrap
+
+
+
+scrap analogico-extended-elevation -projection extended -scale [-128.0 -128.0 3828.7874015748025 -128.0 0.0 0.0 100.50239999999998 0.0 m]
+
+point 5202.0 -6072.0 station -name ANALOGICO03
+
+point 2342.0 -6138.0 station -name ANALOGICO02
+
+point 704.0 -6320.0 station -name ANALOGICO01
+
+point 9323.0 -5946.5 station -name ANALOGICO05
+
+point 8222.0 -5796.0 station -name ANALOGICO04
+
+point 300.0 -6328.0 station -name ANALOGICO00
+
+endscrap
+
+

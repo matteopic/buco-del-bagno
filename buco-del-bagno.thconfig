@@ -1,11 +1,73 @@
 encoding  utf-8
+#source analogico.th
 source index.th
-
 layout debug
-debug all
+  debug station-names
+  sketches on
 endlayout
 
 
-export map -projection plan  -output "Buco del Bagno.pdf"
+layout nowall
+  symbol-hide line wall
+endlayout
 
-export model -output "Buco del Bagno.lox"
+layout colorize
+
+code metapost
+
+  def l_survey_cave (expr P) =
+    T:=identity;
+    pair zz[];
+    pickup PenC;
+    for t = 0 upto length P - 1:
+      zz1 := point t of P;
+      zz2 := point t+1 of P;
+      
+      if ATTR__scrap = "analogico-plan":
+        thdraw zz1 -- zz2 withcolor (0,0,1);
+      elseif ATTR__scrap = "analogico-extended-elevation":
+        thdraw zz1 -- zz2 withcolor (0,0,1);
+      elseif ATTR__scrap = "interno-plan":
+        thdraw zz1 -- zz2 withcolor (0,1,0);
+      elseif ATTR__scrap = "interno-extended-elevation":
+        thdraw zz1 -- zz2 withcolor (0,1,0);        
+      else:
+        thdraw zz1 -- zz2 withcolor (0,0,0);
+      fi
+
+    endfor;
+  enddef;
+
+  def p_station(expr P,mark,txt)(text flags) =
+      if ATTR__scrap = "analogico-plan":
+        p_station_SKBB(P, mark, txt, flags);
+      elseif ATTR__scrap = "analogico-extended-elevation":
+        p_station_SKBB(P, mark, txt, flags);
+                
+      elseif ATTR__scrap = "interno-plan":
+        p_station_SKBB(P, mark, txt, flags);
+      elseif ATTR__scrap = "interno-extended-elevation":
+        p_station_SKBB(P, mark, txt, flags);
+        
+      else:
+        p_station_SKBB(P, mark, txt, flags);
+      fi
+  enddef;
+  
+  
+endlayout
+
+select overlayEE
+export map -projection extended -layout nowall  -layout colorize -output "out/Buco del Bagno - poligonali sezione.pdf"
+unselect overlayEE
+
+select overlayPLAN
+export map -projection plan    -layout nowall   -layout colorize -output "out/Buco del Bagno - poligonali pianta.pdf"
+unselect overlayPLAN
+
+export map -projection plan         -layout colorize              -output "out/Buco del Bagno - pianta.pdf"
+export map -projection extended     -layout colorize              -output "out/Buco del Bagno - sezione.pdf"
+
+
+
+export model -output "out/Buco del Bagno.lox"
