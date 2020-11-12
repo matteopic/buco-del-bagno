@@ -5,7 +5,7 @@ encoding  utf-8
 
 
 
-scrap esterna-plan -projection plan -scale [-128 -7143 10049 -7143 0.0 0.0 258.4958 0.0 m]
+scrap esterna-plan -projection plan -scale [-128 -7143 10049 -7143 0.0 0.0 258.4958 0.0 m] -walls off
 
 area water -clip on
   acqua
@@ -115,7 +115,7 @@ endscrap
 
 
 
-scrap riva-plan -projection plan -scale [-128 -7143 10049 -7143 0.0 0.0 258.4958 0.0 m]
+scrap riva-plan -projection plan -scale [-128 -7143 10049 -7143 0.0 0.0 258.4958 0.0 m] -walls off
 
 point 216.0 2278.0 blocks -visibility on -clip off
 
