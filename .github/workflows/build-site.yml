@@ -49,6 +49,16 @@ jobs:
       id-token: write   # to verify the deployment originates from an appropriate source
 
     steps:
+      - uses: robinraju/release-downloader@v1.8
+        with:
+          repository: "aardgoose/CaveView.js"
+          latest: true
+          fileName: "CaveView.zip"
+          extract: true
+      - name: Upload CaveView as artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
