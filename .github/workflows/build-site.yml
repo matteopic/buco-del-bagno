@@ -30,11 +30,25 @@ jobs:
         uses: matteopic/therion-container@6.1.3
         with:
           thconfig: 'buco-del-bagno.thconfig'
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    # Add a dependency to the build job
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    steps:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
           path: 'out'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
