@@ -45,6 +45,10 @@ jobs:
           extract: true
           out-file-path: 'out'
 
+      - name: Cleanup
+        run: |
+          rm CaveView.zip .gitkeep
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
