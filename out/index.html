@@ -18,10 +18,19 @@ function onload () {
 		terrainDirectory: "",
 		surveyDirectory: "",
 		home: "/CaveView/",
+		view:{
+            scraps: true,
+            terrain: true,
+            grid: true,
+        },
 	} );
 
-	const ui = new CV2.CaveViewUI( viewer );
+    viewer.addEventListener('newCave', (e)=>{ 
+		viewer.getControls().rotateUp(Math.PI / 180.0 * (27-90));
+        viewer.getControls().rotateLeft(Math.PI / 180.0 * -35);
+    });
 
+	const ui = new CV2.CaveViewUI( viewer );
 	ui.loadCave( 'Buco%20del%20Bagno.lox' );
 
 }
