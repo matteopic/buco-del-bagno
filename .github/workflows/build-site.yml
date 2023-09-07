@@ -47,7 +47,7 @@ jobs:
 
       - name: Cleanup
         run: |
-          rm CaveView.zip .gitkeep
+          rm -f CaveView.zip .gitkeep
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
