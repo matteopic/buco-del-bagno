@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<title>73MAAN - Buco del Bagno</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" href="CaveView/css/caveview.css" rel="stylesheet"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<meta name="Description" content="Buco del Bagno survey data">
+	<style>.cv-container{width: 100%;}</style>
+</head>
+<body onload="onload();" >
+	<div class="container-fluid">
+		<h1 class="text-center">73MAAN - Buco del Bagno</h1>
+		<div class="row">
+			<div class="col">
+				<div id="scene"></div>
+			</div>
+		</div>
+
+		<div class="row mt-5">
+			<div class="offset-lg-3 col-lg-6">
+				<h3>Globale</h3>
+				<p>
+					<i class="bi bi-file-earmark-pdf"></i> <a href="./Buco del Bagno - sezione.pdf">Sezione</a><br/>
+					<i class="bi bi-file-earmark-pdf"></i> <a href="./Buco del Bagno - poligonali sezione.pdf">Poligonali - Sezione</a><br/>
+					<i class="bi bi-file-earmark-pdf"></i> <a href="./Buco del Bagno - poligonali pianta.pdf">Poligonali - Pianta</a><br/>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="offset-lg-3 col-lg-6">
+				<h3>3D</h3>
+				<p>
+					<a href="./Buco del Bagno.lox">Therion LOX file</a>
+				</p>
+			</div>
+		</div>
+
+		<footer>
+			<div class="row mt-3">
+				<div class="offset-lg-3 col-lg-6">
+					<p>
+						<i class="bi bi-github"></i>
+						<a href="https://github.com/matteopic/buco-del-bagno">Follow this project on GitHub</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script type="text/javascript" src="CaveView/js/CaveView2.js" ></script>
+	<script type="text/javascript" >
+	function openExternalLink(event){
+		event.preventDefault();
+		const aElement = event.target;
+		window.open(aElement.href, '_blank');
+		return false;
+	}
+
+	function onload () {
+		[...document.getElementsByClassName("external-link")].forEach(element => {
+			element.onclick = openExternalLink;		
+		});
+
+		const viewer = new CV2.CaveViewer( "scene", {
+			terrainDirectory: "",
+			surveyDirectory: "",
+			home: "/CaveView/",
+			view:{
+				scraps: true,
+				terrain: true,
+				grid: true,
+			},
+		});
+
+		viewer.addEventListener('newCave', (e)=>{ 
+			viewer.getControls().rotateUp(Math.PI / 180.0 * (27-90));
+			viewer.getControls().rotateLeft(Math.PI / 180.0 * -35);
+		});
+
+		const ui = new CV2.CaveViewUI( viewer );
+		ui.loadCave( 'Buco%20del%20Bagno.lox' );
+	}
+	</script>
+</body>
+</html>
