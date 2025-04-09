@@ -37,7 +37,7 @@ jobs:
           thconfig: 'buco-del-bagno.thconfig'
 
       - name: Retrieve CaveView.js
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1.12
         with:
           repository: "aardgoose/CaveView.js"
           latest: true
@@ -50,11 +50,11 @@ jobs:
           rm -f CaveView.zip .gitkeep
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload 'out' directory
           path: 'out'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
